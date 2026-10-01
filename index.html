@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Korak – obuća za žene i muškarce</title>
+  <meta name="description" content="Patike, čizme, sandale, cipele i papuče. Dostava za 2–4 radna dana, plaćanje pouzećem.">
+  <meta name="theme-color" content="#1f4a3a">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f4a3a'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Arial' font-weight='700' font-size='19' fill='%23e2a534'%3EK%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.pexels.com">
+  <link rel="preconnect" href="https://script.google.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/css/shop.css">
+</head>
+<body>
+  <a class="skip" href="#main">Preskoči na sadržaj</a>
+
+  <div class="ribbon" aria-label="Uslovi kupovine">
+    <span id="ribbon-shipping">Besplatna dostava od 10.000 din</span>
+    <span>Plaćanje pouzećem</span>
+    <span>Zamena veličine u roku od 14 dana</span>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="#/" aria-label="Korak, početna">Korak</a>
+      <nav class="main-nav" aria-label="Glavna navigacija">
+        <a href="#/" data-nav="home">Početna</a>
+        <a href="#/proizvodi?pol=%C5%BDenske" data-nav="Ženske">Ženske</a>
+        <a href="#/proizvodi?pol=Mu%C5%A1ke" data-nav="Muške">Muške</a>
+        <a href="#/proizvodi" data-nav="all">Svi proizvodi</a>
+      </nav>
+      <a class="cart-link" id="cart-link" href="#/korpa" aria-label="Korpa">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <span class="cart-text">Korpa</span>
+        <span class="cart-count" id="cart-count" hidden>0</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main" class="main" tabindex="-1"></main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <p class="logo logo-footer">Korak</p>
+        <p class="muted">Obuća za žene i muškarce. Šaljemo na adresu u celoj Srbiji.</p>
+      </div>
+      <div>
+        <h2 class="footer-h">Kupovina</h2>
+        <ul class="footer-list">
+          <li><a href="#/proizvodi?pol=%C5%BDenske">Ženska obuća</a></li>
+          <li><a href="#/proizvodi?pol=Mu%C5%A1ke">Muška obuća</a></li>
+          <li><a href="#/korpa">Korpa</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-h">Dostava i plaćanje</h2>
+        <ul class="footer-list">
+          <li>Dostava 2–4 radna dana</li>
+          <li>Plaćanje pouzećem</li>
+          <li>Zamena veličine u roku od 14 dana</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-h">Kontakt</h2>
+        <ul class="footer-list">
+          <li><a id="footer-phone" href="#"></a></li>
+          <li><a id="footer-email" href="#"></a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-legal">© <span id="year"></span> Korak. Fotografije: <a href="https://www.pexels.com" rel="noopener" target="_blank">Pexels</a>.</p>
+  </footer>
+
+  <script src="assets/js/config.js"></script>
+  <script>
+    (function () {
+      var c = window.KORAK_CONFIG;
+      var p = document.getElementById('footer-phone'), e = document.getElementById('footer-email');
+      p.textContent = c.PHONE; p.href = 'tel:' + c.PHONE.replace(/\s/g, '');
+      e.textContent = c.EMAIL; e.href = 'mailto:' + c.EMAIL;
+    })();
+  </script>
+  <!-- Demo podaci: koriste se SAMO dok je API_URL u config.js prazan -->
+  <script src="assets/js/demo-data.js"></script>
+  <script src="assets/js/api.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/catalog.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/views.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
