@@ -26,7 +26,7 @@ window.KORAK_DEMO = (function () {
   ["SH016","Leto Strap","Muške","Sandale",4490,"Bež",31451024,15,"42:3 43:3 44:2","Jednostavne sandale sa mekim kaiševima i laganim đonom."],
   ["SH017","Oksford Mat","Muške","Cipele",12990,"Braon",175689,32,"40:1 41:2 42:2 43:2 44:1 45:1","Oksford cipele od mat kože, zatvoreno pertlanje. Za odelo, venčanje i poslovne sastanke."],
   ["SH018","Gradski Derbi","Muške","Cipele",11990,"Crna",999455,49,"41:2 42:1 43:1 44:0","Derbi cipele od polirane kože sa lakšim gumenim đonom za svakodnevno nošenje."],
-  ["SH019","Zanat","Muške","Cipele",14490,"Braon",2562992,6,"41:1 42:1 43:1","Ručno bojena koža i šiven đon. Mala serija, svaka cipela ima blago drugačiju nijansu."],
+  ["SH019","Zanat","Muške","Cipele",14490,"Braon",15059775,6,"41:1 42:1 43:1","Ručno bojena koža i šiven đon. Mala serija, svaka cipela ima blago drugačiju nijansu."],
   ["SH020","Semiš Loafer","Muške","Cipele",10990,"Braon",9427139,23,"40:2 41:2 42:3 43:2 44:1","Mokasine od semiša bez pertli. Mekane od prvog dana, lako se kombinuju."],
   ["SH021","Kancelarija","Muške","Cipele",9990,"Crna",15557052,40,"41:0 42:0 43:0","Klasične crne cipele za posao, sa tankim đonom i zaobljenim vrhom."],
   ["SH022","Bazen Slide","Muške","Papuče",2490,"Crna",14706995,57,"40:4 41:5 42:5 43:4 44:3 45:2","Gumene natikače za bazen, plažu i teretanu. Brzo se suše."],
