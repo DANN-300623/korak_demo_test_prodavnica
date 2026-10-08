@@ -672,11 +672,11 @@
 
   const FIELDS = [
     { name: 'name', label: 'Ime i prezime', auto: 'name', required: true },
-    { name: 'phone', label: 'Telefon', auto: 'tel', type: 'tel', inputmode: 'tel', required: true, hint: 'Kurir vas zove pre isporuke.' },
-    { name: 'email', label: 'Email', auto: 'email', type: 'email', required: true, hint: 'Na ovu adresu stiže potvrda.' },
-    { name: 'address', label: 'Ulica i broj', auto: 'street-address', required: true },
-    { name: 'city', label: 'Grad', auto: 'address-level2', required: true, half: true },
-    { name: 'postalCode', label: 'Poštanski broj', auto: 'postal-code', inputmode: 'numeric', required: true, half: true },
+    { name: 'phone', label: 'Telefon', auto: 'tel', type: 'tel', inputmode: 'tel', hint: 'Demo prikaz — nije obavezno.' },
+    { name: 'email', label: 'Email', auto: 'email', type: 'email', required: true, hint: 'Na ovu adresu stiže test potvrda.' },
+    { name: 'address', label: 'Ulica i broj', auto: 'street-address' },
+    { name: 'city', label: 'Grad', auto: 'address-level2', half: true },
+    { name: 'postalCode', label: 'Poštanski broj', auto: 'postal-code', inputmode: 'numeric', half: true },
     { name: 'note', label: 'Napomena', textarea: true, hint: 'Npr. sprat, interfon ili vreme kada ste kod kuće.' }
   ];
   const DRAFT_KEY = 'korak.checkoutDraft';
@@ -714,6 +714,7 @@
       }).join('');
 
       return '<div class="page-head"><h1>Porudžbina</h1></div>' +
+        '<div class="demo-notice">Ovo je demo prikaz — test verzija kupovine. Porudžbina se stvarno ne šalje, pa nije potrebno da unosite tačne podatke o dostavi. Samo upišite ime i email na koji možemo da Vam odgovorimo, da vidite kako sistem radi.</div>' +
         '<div class="checkout-layout">' +
           '<div class="checkout-main">' +
             '<div id="checkout-alert"></div>' +
@@ -811,6 +812,10 @@
         '<div class="review-block"><h3>Artikli</h3><ul class="review-lines">' + lines.map(function (l) {
           return '<li><span>' + esc(l.name) + ', vel. ' + l.item.size + (l.item.qty > 1 ? ' × ' + l.item.qty : '') + '</span><span>' + K.rsd(l.subtotal) + '</span></li>';
         }).join('') + '</ul>' + summaryHtml(t) + '<p class="small muted">Plaćanje pouzećem, kuriru pri preuzimanju.</p></div>' +
+        '<label style="display:flex;align-items:flex-start;gap:8px;font-size:13px;font-weight:400;margin-bottom:14px;">' +
+          '<input type="checkbox" id="privacyConsent" required style="margin-top:3px;flex-shrink:0;width:auto;">' +
+          '<span>Slažem se sa <a href="demo-privatnost.html" target="_blank">Politikom privatnosti</a> — email/podaci se koriste isključivo za obradu ove test-porudžbine, ni u koje druge svrhe.</span>' +
+        '</label>' +
         '<button class="btn btn-primary btn-lg btn-block" data-action="confirm-order" id="confirm-btn">Potvrdi porudžbinu</button>' +
         '<p class="small muted center">Potvrdom prihvatate da vas kontaktiramo radi isporuke.</p>';
       document.getElementById('checkout-form').hidden = true;
@@ -828,6 +833,11 @@
 
     submit: async function (btn) {
       if (this.sending) return; // dupli klik
+      const consentEl = document.getElementById('privacyConsent');
+      if (consentEl && !consentEl.checked) {
+        this.alert('Molimo prihvatite Politiku privatnosti da biste nastavili.');
+        return;
+      }
       if (cart.hasProblems()) {
         this.alert('Neke stavke u korpi više nisu dostupne. <a href="#/korpa">Ispravite korpu</a> pa nastavite.');
         return;
