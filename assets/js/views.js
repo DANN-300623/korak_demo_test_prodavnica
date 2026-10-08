@@ -10,7 +10,7 @@
 
   // Fotografije za kategorije na početnoj (Pexels, vidi izvori-slika.txt)
   const CATEGORY_IMAGES = {
-    'Patike': 'https://images.pexels.com/photos/9660927/pexels-photo-9660927.jpeg',
+    'Patike': 'https://images.pexels.com/photos/7193626/pexels-photo-7193626.jpeg',
     'Čizme': 'https://images.pexels.com/photos/9930085/pexels-photo-9930085.jpeg',
     'Sandale': 'https://images.pexels.com/photos/26965808/pexels-photo-26965808.jpeg',
     'Cipele': 'https://images.pexels.com/photos/175689/pexels-photo-175689.jpeg',
