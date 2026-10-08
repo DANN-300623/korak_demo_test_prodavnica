@@ -683,6 +683,9 @@
 
   function validateField(name, v) {
     v = String(v || '').trim();
+    // Demo: polja koja nisu obavezna smeju da ostanu prazna (proverava se samo ako je nešto upisano)
+    const def = FIELDS.filter(function (x) { return x.name === name; })[0];
+    if (!v && def && !def.required) return '';
     switch (name) {
       case 'name': return v.length >= 3 && v.indexOf(' ') !== -1 ? '' : 'Unesite ime i prezime.';
       case 'phone': return /^\+?\d{8,15}$/.test(v.replace(/[\s\-/()]/g, '')) ? '' : 'Unesite ispravan broj telefona.';
