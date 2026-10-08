@@ -866,7 +866,8 @@
         const lines = cart.lines();
         K.storage.set('korak.lastOrder', {
           orderId: res.orderId, total: res.total, shipping: res.shipping, subtotal: res.subtotal, email: customer.email,
-          items: (res.items || []).map(function (i) { return { name: i.name, size: i.size, quantity: i.quantity, subtotal: i.subtotal }; }),
+          items: (res.items && res.items.length ? res.items.map(function (i) { return { name: i.name, size: i.size, quantity: i.quantity, subtotal: i.subtotal }; })
+            : lines.map(function (l) { return { name: l.name, size: l.item.size, quantity: l.item.qty, subtotal: l.subtotal }; })),
           image: lines[0] && lines[0].image
         }, sessionStorage);
         if (res.stockUpdates) cat.applyStock(res.stockUpdates);

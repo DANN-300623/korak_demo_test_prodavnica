@@ -108,13 +108,26 @@
       const qs = new URLSearchParams(params).toString();
       return request(C.API_URL + (C.API_URL.indexOf('?') === -1 ? '?' : '&') + qs, { method: 'GET' });
     },
-    post: function (body) {
+    post: async function (body) {
       if (DEMO) return demo.post(body);
-      return request(C.API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(body)
-      });
+      const send = function () {
+        return request(C.API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(body)
+        });
+      };
+      let res = await send();
+      // Porudžbina se mogla upisati iako odgovor nije stigao (Apps Script ponekad vrati preusmerenje/HTML).
+      // Isti idempotencyKey garantuje da ponovni pokušaj NE pravi dupli nalog – server vrati već upisanu porudžbinu.
+      if (body && body.action === 'createOrder' && body.idempotencyKey) {
+        const pauze = [1500, 3500];
+        for (let i = 0; i < pauze.length && !res.ok && (res.code === 'BAD_RESPONSE' || res.code === 'NETWORK'); i++) {
+          await new Promise(function (r) { setTimeout(r, pauze[i]); });
+          res = await send();
+        }
+      }
+      return res;
     }
   };
 })();
